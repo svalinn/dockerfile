@@ -38,16 +38,15 @@ RUN cd $HOME \
 RUN cd $HOME/opt \
     && mkdir moab \
     && cd moab \
-    && git clone https://bitbucket.org/fathomteam/moab \
-    && cd moab \
-    && git checkout -b Version5.1.0 origin/Version5.1.0 \
-    && autoreconf -fi \
-    && cd .. \
+    && git clone --depth 1 -b Version5.1.0 --single-branch https://bitbucket.org/fathomteam/moab \
     && mkdir build \
     && cd build \
-    && ../moab/configure --enable-shared --enable-optimize --enable-pymoab --disable-debug --with-hdf5=/usr/lib/x86_64-linux-gnu/hdf5/serial --prefix=$HOME/opt/moab \
-    && make \
-    && make install \
+    && cmake ../moab -DCMAKE_C_FLAGS="-fPIC -DPIC" -DCMAKE_CXX_FLAGS="-fPIC -DPIC" -DBUILD_SHARED_LIBS=ON \
+       -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--no-undefined" -DENABLE_MPI=OFF  \
+       -DENABLE_HDF5=ON -DHDF5_ROOT=/usr/lib/x86_64-linux-gnu/hdf5/serial \
+       -DENABLE_NETCDF=OFF -DENABLE_METIS=OFF -DENABLE_IMESH=OFF -DENABLE_FBIGEOM=OFF \
+       -DENABLE_PYMOAB=ON -DPREFIX=$HOME/opt/moab \
+    && make all -j 8 \
     && cd .. \
     && rm -rf build moab
 
