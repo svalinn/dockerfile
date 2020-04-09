@@ -7,19 +7,19 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 ENV HOME /root
 
-RUN apt-get -y --force-yes update
-RUN apt-get install -y --force-yes \
-    software-properties-common \
-    build-essential \
-    git \
-    cmake \
-    gfortran \
-    libblas-dev \
-    python3-pip \
-    liblapack-dev \
-    libhdf5-dev \
-    autoconf \
-    libtool
+RUN apt-get -y --force-yes update \
+    && apt-get install -y --force-yes \
+       software-properties-common \
+       build-essential \
+       git \
+       cmake \
+       gfortran \
+       libblas-dev \
+       python3-pip \
+       liblapack-dev \
+       libhdf5-dev \
+       autoconf \
+       libtool
 
 # need to put libhdf5.so on LD_LIBRARY_PATH
 ENV LD_LIBRARY_PATH /usr/lib/x86_64-linux-gnu
@@ -31,8 +31,8 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 10; \
     update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 10;
 
 # upgrade pip and install python dependencies
-RUN python -m pip install --upgrade pip
-RUN pip install numpy scipy cython tables matplotlib setuptools future pytest
+RUN python -m pip install --upgrade pip \
+    && pip install numpy scipy cython tables matplotlib setuptools future pytest
 
 
 # make starting directory
