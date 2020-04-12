@@ -2,7 +2,7 @@ FROM svalinn/pymoab-py2-18.04:latest
 
 ENV HOME /root
 
-RUN apt-get install -y --force-yes wget
+RUN apt-get install -y --force-yes wget cpio
 
 RUN cd $HOME/opt \
     && wget http://portal.nersc.gov/project/visit/releases/2.13.3/visit2_13_3.linux-x86_64-ubuntu18.tar.gz \
