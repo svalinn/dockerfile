@@ -50,8 +50,9 @@ RUN cd $HOME/opt \
        -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--no-undefined" -DENABLE_MPI=OFF  \
        -DENABLE_HDF5=ON -DHDF5_ROOT=/usr/lib/x86_64-linux-gnu/hdf5/serial \
        -DENABLE_NETCDF=OFF -DENABLE_METIS=OFF -DENABLE_IMESH=OFF -DENABLE_FBIGEOM=OFF \
-       -DENABLE_PYMOAB=ON -DPREFIX=$HOME/opt/moab \
-    && make all -j 8
+       -DENABLE_PYMOAB=ON -DCMAKE_INSTALL_PREFIX=$HOME/opt/moab \
+    && make -j 8 \
+    && make install
 
 # set environment variables
 ENV PATH $HOME/opt/moab/bin/:$PATH
