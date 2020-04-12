@@ -10,6 +10,8 @@ RUN cd $HOME/opt \
     && echo 1 > input \
     && bash visit-install2_13_3 2.13.3 linux-x86_64-ubuntu18 /usr/local/visit < input
 
+RUN pip install xmldiff
+
 # set environment variables
 ENV PATH /usr/local/visit/bin:$PATH
 ENV LD_LIBRARY_PATH /usr/local/visit/2.13.3/linux-x86_64/lib/:$LD_LIBRARY_PATH
