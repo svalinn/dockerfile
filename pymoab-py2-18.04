@@ -47,7 +47,9 @@ RUN cd $HOME/opt \
        -DENABLE_NETCDF=OFF -DENABLE_METIS=OFF -DENABLE_IMESH=OFF -DENABLE_FBIGEOM=OFF \
        -DENABLE_PYMOAB=ON -DCMAKE_INSTALL_PREFIX=$HOME/opt/moab \
     && make all -j 8 \
-    && make install
+    && make install \
+    && cd $HOME/opt/moab \
+    && rm -rf build moab
 
 # set environment variables
 ENV PATH $HOME/opt/moab/bin/:$PATH
