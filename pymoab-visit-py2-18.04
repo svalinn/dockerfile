@@ -2,17 +2,25 @@ FROM svalinn/pymoab-py2-18.04:latest
 
 ENV HOME /root
 
-RUN apt-get install -y --force-yes wget cpio
-
-RUN cd $HOME/opt \
-    && wget http://portal.nersc.gov/project/visit/releases/2.13.3/visit2_13_3.linux-x86_64-ubuntu18.tar.gz \
-    && wget http://portal.nersc.gov/project/visit/releases/2.13.3/visit-install2_13_3 \
-    && echo 1 > input \
-    && bash visit-install2_13_3 2.13.3 linux-x86_64-ubuntu18 /usr/local/visit < input
+RUN apt-get install -y --force-yes wget cpio libpcre3-dev
 
 RUN pip install xmldiff
 
+RUN cd $HOME/opt \
+    && wget https://github.com/visit-dav/visit/releases/download/v3.1.1/visit3_1_1.linux-x86_64-ubuntu18.tar.gz \
+    && wget https://github.com/visit-dav/visit/releases/download/v3.1.1/visit-install3_1_1 \
+    && echo 1 > input \
+    && bash visit-install3_1_1 3.1.1 linux-x86_64-ubuntu18 /usr/local/visit < input \
+    && rm -rf visit3_1_1.linux-x86_64-ubuntu18.tar.gz
+
 # set environment variables
 ENV PATH /usr/local/visit/bin:$PATH
-ENV LD_LIBRARY_PATH /usr/local/visit/2.13.3/linux-x86_64/lib/:$LD_LIBRARY_PATH
-ENV PYTHONPATH /usr/local/visit/2.13.3/linux-x86_64/lib/site-packages:$PYTHONPATH
+ENV LD_LIBRARY_PATH /usr/local/visit/3.1.1/linux-x86_64/lib/:$LD_LIBRARY_PATH
+ENV PYTHONPATH /usr/local/visit/3.1.1/linux-x86_64/lib/site-packages:$PYTHONPATH
+
+RUN apt-get install -y --fix-missing \
+    libgl1-mesa-glx \
+    libgl1-mesa-dev \
+    libsm6 \
+    libxt6 \
+    libglu1-mesa
