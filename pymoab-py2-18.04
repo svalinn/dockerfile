@@ -46,7 +46,7 @@ RUN cd $HOME/opt \
        -DENABLE_HDF5=ON -DHDF5_ROOT=/usr/lib/x86_64-linux-gnu/hdf5/serial \
        -DENABLE_NETCDF=OFF -DENABLE_METIS=OFF -DENABLE_IMESH=OFF -DENABLE_FBIGEOM=OFF \
        -DENABLE_PYMOAB=ON -DCMAKE_INSTALL_PREFIX=$HOME/opt/moab \
-    && make all -j 8 \
+    && make -j 8 \
     && make install \
     && cd $HOME/opt/moab \
     && rm -rf build moab
