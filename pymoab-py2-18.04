@@ -45,12 +45,14 @@ RUN cd $HOME/opt \
        -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--no-undefined" -DENABLE_MPI=OFF  \
        -DENABLE_HDF5=ON -DHDF5_ROOT=/usr/lib/x86_64-linux-gnu/hdf5/serial \
        -DENABLE_NETCDF=OFF -DENABLE_METIS=OFF -DENABLE_IMESH=OFF -DENABLE_FBIGEOM=OFF \
-       -DENABLE_PYMOAB=ON -DPREFIX=$HOME/opt/moab \
-    && make all -j 8 \
-    && cd .. \
+       -DENABLE_PYMOAB=ON -DCMAKE_INSTALL_PREFIX=$HOME/opt/moab \
+    && make -j 8 \
+    && make install \
+    && cd $HOME/opt/moab \
     && rm -rf build moab
 
 # set environment variables
 ENV PATH $HOME/opt/moab/bin/:$PATH
 ENV LD_LIBRARY_PATH $HOME/opt/moab/lib:$LD_LIBRARY_PATH
 ENV PYTHONPATH $HOME/opt/moab/lib/python2.7/site-packages/:$PYTHONPATH
+
