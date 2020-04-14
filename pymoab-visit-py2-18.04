@@ -1,7 +1,5 @@
 FROM svalinn/pymoab-py2-18.04:latest
 
-ENV HOME /root
-
 RUN apt-get -y --force-yes update \
     && apt-get install -y --fix-missing \
     wget \
