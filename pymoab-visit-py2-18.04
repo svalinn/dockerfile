@@ -9,9 +9,8 @@ RUN apt-get -y --force-yes update \
     libgl1-mesa-dev \
     libsm6 \
     libxt6 \
-    libglu1-mesa
-
-RUN pip install xmldiff
+    libglu1-mesa \
+    && pip install xmldiff
 
 RUN cd $HOME/opt \
     && wget https://github.com/visit-dav/visit/releases/download/v3.1.1/visit3_1_1.linux-x86_64-ubuntu18.tar.gz \
