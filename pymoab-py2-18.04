@@ -38,7 +38,7 @@ RUN cd $HOME \
 RUN cd $HOME/opt \
     && mkdir moab \
     && cd moab \
-    && git clone --depth 1 -b Version5.1.0 --single-branch https://bitbucket.org/fathomteam/moab \
+    && git clone --depth 1 -b Version5.2.0 --single-branch https://bitbucket.org/fathomteam/moab \
     && mkdir build \
     && cd build \
     && cmake ../moab -DCMAKE_C_FLAGS="-fPIC -DPIC" -DCMAKE_CXX_FLAGS="-fPIC -DPIC" -DBUILD_SHARED_LIBS=ON \
