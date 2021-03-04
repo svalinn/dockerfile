@@ -28,7 +28,7 @@ ENV LIBRARY_PATH /usr/lib/x86_64-linux-gnu
 # upgrade pip and install python dependencies
 ENV PATH $HOME/.local/bin:$PATH
 RUN python -m pip install --upgrade pip \
-    && pip install numpy scipy cython tables matplotlib setuptools future pytest
+    && pip install numpy scipy cython tables matplotlib setuptools future pytest pandas
 
 # make starting directory
 RUN cd $HOME \
