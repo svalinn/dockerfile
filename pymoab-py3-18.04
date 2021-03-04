@@ -32,7 +32,7 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 10; \
 
 # upgrade pip and install python dependencies
 RUN python -m pip install --upgrade pip \
-    && pip install numpy scipy cython tables matplotlib setuptools future pytest
+    && pip install numpy scipy cython tables matplotlib setuptools future pytest pandas
 
 
 # make starting directory
