@@ -15,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        : [
+       name : [
           pymoab-py2-18.04,
           pymoab-py3-18.04,
           pymoab-visit-py2-18.04,
