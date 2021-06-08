@@ -14,10 +14,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Publish to Registry
+
+    - name: Publish pymoab-py2-18.04 to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
         name: shimwell/pymoab-py2-18.04
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         dockerfile: pymoab-py2-18.04/Dockerfile
+
+    - name: Publish pymoab-py3-18.04 to Registry
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: shimwell/pymoab-py3-18.04
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        dockerfile: pymoab-py3-18.04/Dockerfile
+
+    - name: Publish pymoab-visit-py2-18.04 to Registry
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: shimwell/pymoab-visit-py2-18.04
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        dockerfile: pymoab-visit-py2-18.04/Dockerfile
