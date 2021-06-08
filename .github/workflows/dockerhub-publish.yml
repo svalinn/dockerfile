@@ -27,7 +27,7 @@ jobs:
     - name: Publish ${{ matrix.name }} to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        name: shimwell/${{ matrix.name }}
+        name: svalinn/${{ matrix.name }}
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         dockerfile: ${{ matrix.name }}/Dockerfile
