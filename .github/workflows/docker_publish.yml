@@ -1,7 +1,7 @@
 
 on:
   push:
-    branches: ['gh_action_gh_container_registry']
+    branches: ['gh_action_gh_container_registry']  # todo replace with main once we know this is working
 
 env:
   REGISTRY: 
