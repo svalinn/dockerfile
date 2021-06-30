@@ -32,7 +32,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push Docker image
+      - name: Build and push pymoab Docker image
         uses: docker/build-push-action@v2
         with:
           file: ${{ matrix.name }}/Dockerfile
@@ -41,7 +41,7 @@ jobs:
           tags: ${{ matrix.name }}
  
         if: success()
-      - name: Build and push Docker image
+      - name: Build and push visit Docker image
         uses: docker/build-push-action@v2
         with:
           file: pymoab-visit-py2-18.04/Dockerfile
