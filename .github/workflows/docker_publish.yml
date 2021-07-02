@@ -7,6 +7,9 @@ jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
 
+    env:
+      name_visit: pymoab-visit-py2-18.04
+
     strategy:
       matrix:
        name : [
@@ -40,7 +43,7 @@ jobs:
       - name: Build and push visit Docker image
         uses: docker/build-push-action@v2
         with:
-          file: pymoab-visit-py2-18.04/Dockerfile
+          file: ${{ env.name_visit}}/Dockerfile
           context: .
           push: true
           tags: ghcr.io/svalinn/pymoab-visit-py2-18.04
