@@ -46,4 +46,4 @@ jobs:
           file: ${{ env.name_visit}}/Dockerfile
           context: .
           push: true
-          tags: ghcr.io/svalinn/pymoab-visit-py2-18.04
+          tags: ghcr.io/svalinn/${{ env.name_visit}}
