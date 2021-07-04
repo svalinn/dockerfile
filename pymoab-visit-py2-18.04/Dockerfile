@@ -1,4 +1,4 @@
-FROM svalinn/pymoab-py2-18.04:latest
+FROM ghcr.io/svalinn/pymoab-py2-18.04:latest
 
 RUN apt-get -y --force-yes update \
     && apt-get install -y --fix-missing \
